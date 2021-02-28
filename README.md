@@ -1,62 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Technical Test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Last Updated: January 2021
 
-## About Laravel
+## OVERVIEW
+========
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+DJ Valeting is a car valeting service which tours the business parks of Wakefield valeting cars on the go. DJ Valeting has approached us to solve a simple problem in an easy-to-use way, the problem being, bookings. Currently, all bookings are done over the phone and are written down manually and tracked this way, we are going to make this automated.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## GOALS
+=====
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1.  Automate the booking system 
 
-## Learning Laravel
+1.  Have a client facing form to take bookings.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2.  Have a way to view the bookings.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3.  Have a way to approve the bookings.
 
-## Laravel Sponsors
+3.  Have a simple admin area which displays a table of bookings in date order.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1.  Bookings should come from a form that is client facing.
 
-### Premium Partners
+2.  DJ Valeting should be able to create, edit, delete & approve bookings manually via the admin area too.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+3.  Admin area should be behind a login.
 
-## Contributing
+## SPECIFICATIONS
+==============
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Technology Requirements
+-----------------------
 
-## Code of Conduct
+This system should ideally be built on the latest version of the Laravel framework. If you are not comfortable doing this, you are free to build the system in vanilla PHP, demonstrating Object Oriented Programming where necessary.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Client Facing Form
+------------------
 
-## Security Vulnerabilities
+This should be a simple form which posts and saves to the database for DJ Valeting to then view in an admin area, the form should consist of the following fields:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1.  Name (required)
 
-## License
+2.  Booking Date (required)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+3.  Flexibility (options below) (required)
+
+1.  +/- 1 Day
+
+2.  +/- 2 Days
+
+3.  +/- 3 Days
+
+5.  Vehicle Size (options below) (required)
+
+1.  Small
+
+2.  Medium
+
+3.  Large
+
+4.  Van
+
+7.  Contact Number (required)
+
+8.  Email Address (required)
+
+## Admin Area
+----------
+
+The admin area should be locked down behind a login system, the login form should have the following fields:
+
+1.  Email Address
+
+2.  Password (This will need hashing, you can decide a suitable secure hashing algorithm for this)
+
+Once entering the admin area, DJ Valeting should be presented with a basic table, listing all of their bookings, the columns on the table should match the fields on the client facing form above with the addition of one more column called "Actions", which will have a tick icon/approve button, edit icon/edit button and delete icon/delete button. Above the table, there should also be a green "Create" button, to add a new booking manually. There should also be a nav bar, which gives a way for the DJ Valeting to log out of the system.
+
+The create button should take you to a create booking screen which contains the same fields as the initial form, plus a green submit button, any new bookings should save on submission and be reflected in the table.
+
+The tick icon/approve button should simply mark the record as approved and the row in the table should receive a green tint in colour.
+
+The edit icon/edit button should take you to an edit screen which contains the same fields as the initial form, plus a green submit button, with any data pre-populated. Any edits should save on submission and be reflected in the table.
+
+The delete icon/delete button should simply remove the record and this should be reflected on the table.
+
+## Source Control
+--------------
+
+In order to get an idea as to how you work with GIT, and to also timestamp how long it took you to do each section we require that you host a repository on a public facing GIT management (IE GitHub, GitLab or BitBucket). If you take breaks during this test - please create a commit labelling both the start & end of your session so we know when you started and finished working on this project.
+
+## Bonus Material
+--------------
+
+Upon approving a booking, an email should be sent to the client accepting their booking request, this should be limited so that the email cannot be spammed, it should only go out on the first ever click.
+
+## GitHub Users To Invite
+----------------------
+
+fabrice@6bdigital.com
