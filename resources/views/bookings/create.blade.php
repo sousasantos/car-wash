@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('booking.store') }}" class="needs-validation">
+<form method="post" action="{{ $route }}" class="needs-validation">
     @csrf
     <x-forms.input 
         type=text 
