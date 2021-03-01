@@ -21,11 +21,11 @@ class Booking extends Model
 
     public function flexibility()
     {
-        return $this->hasOne(Flexibility::class);
+        return $this->belongsTo(Flexibility::class);
     }
 
     public function vehicleSize()
     {
-        return $this->hasOne(VehicleSize::class);
+        return $this->belongsTo(VehicleSize::class);
     }
 }

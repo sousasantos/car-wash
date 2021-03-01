@@ -12,7 +12,9 @@ class BookingController extends Controller
 {
     public function index()
     {
-        return view('admin.bookings.index');
+        $bookings = Booking::orderBy('booking_date')->paginate(10);
+
+        return view('admin.bookings.index', compact('bookings'));
     }
 
     public function create()

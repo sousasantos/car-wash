@@ -16,8 +16,8 @@ class FlexibilitySeeder extends Seeder
     {
         Flexibility::factory()->createMany([
             ['description' => '1 day'],
-            ['description' => '2 day'],
-            ['description' => '3 day']
+            ['description' => '2 days'],
+            ['description' => '3 days']
         ]);
     }
 }
