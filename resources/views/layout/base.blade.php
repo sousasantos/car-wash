@@ -8,7 +8,7 @@
 
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light bg-gradient">
     @include('layout._navbar')
     @if (session('success'))
         <div class="container p-5">        
