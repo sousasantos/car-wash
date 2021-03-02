@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,16 @@ Route::post('booking', [
     BookingController::class, 'store'
 ])->name('booking.store');
 
-Route::prefix('admin')->name('admin.')->group(function() {
-    Route::prefix('bookings')->name('bookings.')->group(function() {
+Route::get('login', function() {
+    return view('auth.login');
+})->name('login')->middleware('guest');
+
+Route::post('login', [LoginController::class, 'authenticate'])->middleware('guest');
+
+Route::middleware('auth')->group(function() {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+    Route::prefix('admin/bookings')->name('admin.bookings.')->group(function() {
         Route::get('/', [AdminBookingController::class, 'index'])->name('index');
         Route::get('create', [AdminBookingController::class, 'create'])->name('create');
         Route::post('store', [AdminBookingController::class, 'store'])->name('store');

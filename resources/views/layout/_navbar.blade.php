@@ -3,8 +3,11 @@
     <div
         class="container">
         <h1
-            class="navbar-brand"
-            href="#">DJ Valeting</h1>
+            class="navbar-brand">
+            <a
+                href="{{ route('homepage') }}"
+                class="text-reset text-decoration-none">DJ Valeting</a>
+        </h1>
         <button 
             class="navbar-toggler" 
             type="button" 
@@ -20,10 +23,20 @@
             id="navbar-menu">
             <div 
                 class="navbar-nav">
-                <a 
+                @auth
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button
+                            type="submit"
+                            class="btn btn-secondary ">Logout</button>
+                    </form>
+                @else
+                    <a 
                     class="btn btn-secondary " 
                     aria-current="page" 
-                    href="#">Login</a>
+                    href="{{ route('login') }}">Login</a>
+                @endauth
+                
             </div>
         </div>
     </div>
