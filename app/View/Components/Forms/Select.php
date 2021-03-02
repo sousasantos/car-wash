@@ -9,16 +9,18 @@ class Select extends Component
     public $label;
     public $name;
     public $values;
+    public $selected;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label, $name, $values)
+    public function __construct($label, $name, $values, $selected)
     {
         $this->label = $label;
         $this->name = $name;
         $this->values = $values;
+        $this->selected = $selected;
     }
 
     /**

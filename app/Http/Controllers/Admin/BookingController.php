@@ -31,4 +31,19 @@ class BookingController extends Controller
 
         return redirect()->route('admin.bookings.index')->withSuccess('Booking created successfully!');
     }
+
+    public function edit(Booking $booking)
+    {
+        $flexibilities = Flexibility::all();
+        $vehicleSizes = VehicleSize::all();
+
+        return view('admin.bookings.edit', compact('booking','flexibilities', 'vehicleSizes'));
+    }
+
+    public function update(BookingRequest $request, Booking $booking)
+    {
+        $booking->update($request->validated());
+        
+        return redirect()->route('admin.bookings.index')->withSuccess('Booking updated successfully!');
+    }
 }

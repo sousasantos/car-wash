@@ -8,7 +8,11 @@
                 name="{{ $name}}"
                 class="form-select @error($name) is-invalid @enderror">
                 @foreach ($values as $value)
-                    <option value="{{  $value->id }}">{{  $value->description }}</option>
+                    <option
+                        value="{{ $value->id }}"                        
+                        @if(old($name) === $value->id || $selected === $value->id) selected @endif>
+                        {{  $value->description }}
+                    </option>
                 @endforeach
             </select>
             @error($name)

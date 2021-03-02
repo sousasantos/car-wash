@@ -2,13 +2,14 @@
 
 @section('content')
 <section class="container my-5 p-5 bg-white shadow-sm">
+    <div class="col-12 col-md-10 offset-md-1">
     <div class="d-flex">
         <h3 class="fw-bold py-4">Bookings</h3>
         <a
             href="{{ route('admin.bookings.create') }}"
             class="btn btn-outline-success ms-auto my-auto h-100">Create</a>
     </div>
-    <div class="col-md-10 offset-1">
+    
         <table class="table table-hover">
             <thead class="table-light">
                 <tr>
@@ -31,13 +32,22 @@
                         <td>+/- {{ $booking->flexibility->description }}</td>
                         <td>{{ $booking->vehicleSize->description }}</td>
                         <td>
-                            <a href="#" class="mx-1 text-reset text-decoration-none">
+                            <a
+                                title="Accept Booking"
+                                href="#"
+                                class="mx-1 text-reset text-decoration-none">
                                 <i class="bi-check2-circle text-success"></i>
                             </a>
-                            <a href="#" class="mx-1 text-reset text-decoration-none">
+                            <a
+                                title="Edit Booking"
+                                href="{{ route('admin.bookings.edit', $booking->id) }}"
+                                class="mx-1 text-reset text-decoration-none">
                                 <i class="bi bi-pencil text-primary"></i>
                             </a>
-                            <a href="#" class="mx-1 text-reset text-decoration-none">
+                            <a
+                                title="Delete Booking"
+                                href="#"
+                                class="mx-1 text-reset text-decoration-none">
                                 <i class="bi-trash text-danger"></i>
                             </a>
                         </td>
