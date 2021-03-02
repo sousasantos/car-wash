@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingRequest;
+use App\Mail\BookingApproved;
 use App\Models\Booking;
 use App\Models\Flexibility;
 use App\Models\VehicleSize;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -53,5 +55,15 @@ class BookingController extends Controller
         $booking->delete();
         
         return redirect()->route('admin.bookings.index')->withInfo('Booking deleted successfully!');
+    }
+
+    public function approve(Booking $booking)
+    {
+        $booking->approved = true;
+        $booking->save();
+
+        Mail::to($booking->email)->send(new BookingApproved($booking));
+
+        return redirect()->route('admin.bookings.index')->withInfo('Booking approved successfully!');
     }
 }

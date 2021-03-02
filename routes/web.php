@@ -32,5 +32,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('{booking}/edit', [AdminBookingController::class, 'edit'])->name('edit');
         Route::put('{booking}/update', [AdminBookingController::class, 'update'])->name('update');
         Route::delete('{booking}/update', [AdminBookingController::class, 'destroy'])->name('destroy');
+        Route::patch('{booking}/approve', [AdminBookingController::class, 'approve'])->name('approve');
     });
 });

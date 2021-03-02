@@ -4954,6 +4954,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+document.querySelectorAll('form').forEach(function (form) {
+  form.addEventListener('submit', function () {
+    form.querySelector('[type="submit"]').setAttribute('disabled', 'disabled');
+  }, false);
+});
 
 /***/ }),
 

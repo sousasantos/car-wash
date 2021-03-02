@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 @foreach ($bookings as $booking)
-                    <tr>
+                    <tr @if($booking->approved) class="table-success" @endif>
                         <td>{{ $booking->name }}</td>
                         <td>{{ $booking->email }}</td>
                         <td>{{ $booking->contact_number }}</td>
@@ -32,12 +32,16 @@
                         <td>+/- {{ $booking->flexibility->description }}</td>
                         <td>{{ $booking->vehicleSize->description }}</td>
                         <td class="d-flex">
-                            <a
-                                title="Accept Booking"
-                                href="#"
-                                class="btn shadow-none">
-                                <i class="bi-check2-circle text-success"></i>
-                            </a>
+                            <form action="{{ route('admin.bookings.approve', $booking) }}" method="post">
+                                @csrf
+                                @method('patch')
+                                <button
+                                    type="submit"
+                                    title="Accept Booking"
+                                    class="btn btn-link btn shadow-none " >
+                                    <i class="bi-check2-circle text-success"></i>
+                                </button>
+                            </form>
                             <a
                                 title="Edit Booking"
                                 href="{{ route('admin.bookings.edit', $booking->id) }}"
@@ -48,8 +52,8 @@
                                 @csrf
                                 @method('delete')
                                 <button
+                                    type="submit"
                                     title="Delete Booking"
-                                    href="#"
                                     class="btn btn-link btn shadow-none">
                                     <i class="bi-trash text-danger"></i>
                                 </button>
