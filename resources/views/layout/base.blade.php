@@ -10,9 +10,9 @@
 </head>
 <body class="bg-light bg-gradient">
     @include('layout._navbar')
-    @if (session('success'))
+    @if (session('info'))
         <div class="col-6 offset-3">        
-            <x-alert type=success :message="session('success')"></x-alert>
+            <x-alert type=info :message="session('info')"></x-alert>
         </div>
     @endif
 

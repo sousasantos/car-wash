@@ -29,7 +29,7 @@ class BookingController extends Controller
     {
         Booking::create($request->validated());
 
-        return redirect()->route('admin.bookings.index')->withSuccess('Booking created successfully!');
+        return redirect()->route('admin.bookings.index')->withInfo('Booking created successfully!');
     }
 
     public function edit(Booking $booking)
@@ -44,6 +44,14 @@ class BookingController extends Controller
     {
         $booking->update($request->validated());
         
-        return redirect()->route('admin.bookings.index')->withSuccess('Booking updated successfully!');
+        return redirect()->route('admin.bookings.index')->withInfo('Booking updated successfully!');
+    }
+
+
+    public function destroy(Booking $booking)
+    {
+        $booking->delete();
+        
+        return redirect()->route('admin.bookings.index')->withInfo('Booking deleted successfully!');
     }
 }

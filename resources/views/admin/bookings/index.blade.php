@@ -31,25 +31,29 @@
                         <td>{{ $booking->booking_date }}</td>
                         <td>+/- {{ $booking->flexibility->description }}</td>
                         <td>{{ $booking->vehicleSize->description }}</td>
-                        <td>
+                        <td class="d-flex">
                             <a
                                 title="Accept Booking"
                                 href="#"
-                                class="mx-1 text-reset text-decoration-none">
+                                class="btn shadow-none">
                                 <i class="bi-check2-circle text-success"></i>
                             </a>
                             <a
                                 title="Edit Booking"
                                 href="{{ route('admin.bookings.edit', $booking->id) }}"
-                                class="mx-1 text-reset text-decoration-none">
+                                class="btn shadow-none">
                                 <i class="bi bi-pencil text-primary"></i>
                             </a>
-                            <a
-                                title="Delete Booking"
-                                href="#"
-                                class="mx-1 text-reset text-decoration-none">
-                                <i class="bi-trash text-danger"></i>
-                            </a>
+                            <form action="{{ route('admin.bookings.destroy', $booking) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button
+                                    title="Delete Booking"
+                                    href="#"
+                                    class="btn btn-link btn shadow-none">
+                                    <i class="bi-trash text-danger"></i>
+                                </button>
+                            </form>                            
                         </td>
                     </tr>
                 @endforeach

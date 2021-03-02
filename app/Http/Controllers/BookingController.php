@@ -12,6 +12,6 @@ class BookingController extends Controller
     {
         Booking::create($request->validated());
 
-        return back()->withSuccess('Booking created successfully!');
+        return back()->withInfo('Booking created successfully!');
     }
 }
